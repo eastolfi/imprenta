@@ -1,0 +1,7 @@
+1;;A3;true;MATE;150;true;MATE;false;NO;true
+1;tarjetass;TARJETA;true;BRILLO;350;true;BRILLO;true;NO;false
+1;triptico;A4;true;OFFSET;150;true;OFFSET;false;NO;true
+1;flyer;A5;false;RECICLADO;100;false;RECICLADO;false;NO;false
+1;triptico;A4;true;MATE;200;true;MATE;false;NO;true
+1;cartas;A4;false;MATE;150;false;MATE;true;NO;false
+1;triptico;A4;true;MATE;200;true;MATE;false;NO;true

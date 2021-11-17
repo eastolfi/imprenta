@@ -1,0 +1,16 @@
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\datos\IAccesoDatos.java
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\excepciones\LecturaDatosEx.java
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\dominio\Cliente.java
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\negocio\ICatalogoProductos.java
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\negocio\CatalogoProductosImp.java
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\dominio\OrdenTrabajo.java
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\principal\Principal.java
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\dominio\TipoPapel.java
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\dominio\Producto.java
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\dominio\SeleeccionarEnm.java
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\dominio\TipoEncuadernado.java
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\dominio\TipoPlastificado.java
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\excepciones\EscrituraDatosEx.java
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\datos\AccesoDatosImp.java
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\excepciones\AccesoDatosEx.java
+G:\MARIA\Documents\GRAELSIA\_PROGRAMACION\_DAM\ACCESO A DATOS\GestionImprentaMLG-main\gestionImprenta\src\main\java\com\imprenta\dominio\TamanioPapel.java

@@ -1,0 +1,17 @@
+com\imprenta\dominio\TamanioPapel.class
+com\imprenta\dominio\TipoPapel.class
+com\imprenta\excepciones\EscrituraDatosEx.class
+com\imprenta\dominio\TipoPlastificado.class
+com\imprenta\dominio\Producto.class
+com\imprenta\excepciones\AccesoDatosEx.class
+com\imprenta\negocio\ICatalogoProductos.class
+com\imprenta\excepciones\LecturaDatosEx.class
+com\imprenta\dominio\OrdenTrabajo.class
+com\imprenta\dominio\Cliente.class
+com\imprenta\dominio\TipoEncuadernado.class
+com\imprenta\datos\AccesoDatosImp.class
+com\imprenta\datos\IAccesoDatos.class
+com\imprenta\dominio\SeleeccionarEnm.class
+com\imprenta\negocio\CatalogoProductosImp.class
+com\imprenta\principal\Principal.class
+com\imprenta\dominio\OrdenTrabajo$1.class
