@@ -60,7 +60,7 @@ public class AccesoDatosImp implements IAccesoDatos {
                 + ";" + producto.getPapel()
                 + ";" + producto.getGramaje()
                 + ";" + producto.isIs_Color()
-                + ";" + producto.getPapel()
+                + ";" + producto.getPlastificado()
                 + ";" + producto.isPuntasRedondeaDas()
                 + ";" + producto.getEncuadernado()
                 + ";" + producto.isIs_plegado();
