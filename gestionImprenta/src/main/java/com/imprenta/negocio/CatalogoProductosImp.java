@@ -14,11 +14,11 @@ public class CatalogoProductosImp implements ICatalogoProductos {
     }
 
     @Override
-    public void agregar(String nombreArchivo,  String nombre_producto, TamanioPapel medida, boolean is_2_caras, TipoPapel papel, int gramaje, boolean is_Color, TipoPlastificado plastificado, boolean puntasRedondeaDas, TipoEncuadernado encuadernado, boolean is_plegado) {
+    public void agregar(String nombre_producto, TamanioPapel medida, boolean is_2_caras, TipoPapel papel, int gramaje, boolean is_Color, TipoPlastificado plastificado, boolean puntasRedondeaDas, TipoEncuadernado encuadernado, boolean is_plegado) {
         try {
-            Producto productos = new Producto(  nombre_producto,  medida,  is_2_caras,  papel,  gramaje,  is_Color,   plastificado,  puntasRedondeaDas,  encuadernado,  is_plegado);
-            if (datos.existe(nombreArchivo) == true) {
-                datos.escribir(productos, nombreArchivo, true);
+            Producto producto = new Producto(  nombre_producto,  medida,  is_2_caras,  papel,  gramaje,  is_Color,   plastificado,  puntasRedondeaDas,  encuadernado,  is_plegado);
+            if (datos.existe() == true) {
+                datos.escribir(producto, true);
             } else {
                 System.out.println("El archivo no existe");
             }
@@ -44,11 +44,11 @@ public class CatalogoProductosImp implements ICatalogoProductos {
         }
     }*/
     
-     @Override
-    public void listar(String nombreArchivo) {
+    @Override
+    public void listar() {
         List<Producto> lista = new ArrayList<>();
         try {
-            lista = datos.listar(nombreArchivo);
+            lista = datos.listar();
             for (int i = 0; i < lista.size(); i++){
                 System.out.println( "Prodcuto: " +
                         + lista.get(i).getId_trabajo()
@@ -87,19 +87,19 @@ public class CatalogoProductosImp implements ICatalogoProductos {
     }
 
     @Override
-    public void buscar(String nombreArchivo, String buscar) {
+    public void buscar(String buscar) {
         try {
-            System.out.println(datos.buscar(nombreArchivo, buscar));
+            System.out.println(datos.buscar(buscar));
         } catch (LecturaDatosEx e) {
             e.printStackTrace(System.out);
         }
     }
 
     @Override
-    public void iniciarArchivo(String nombreArchivo) {
+    public void iniciarArchivo() {
         try {
-            if (datos.existe(nombreArchivo) == false) {
-                datos.crear(nombreArchivo);
+            if (datos.existe() == false) {
+                datos.crear();
             } else {
                 System.out.println("El archivo ya existe");
             }
@@ -110,8 +110,8 @@ public class CatalogoProductosImp implements ICatalogoProductos {
     }
 
     @Override
-    public void borrar(String nombreArchivo, String buscar) {
-        datos.borrar(nombreArchivo, buscar);
+    public void borrar(String buscar) {
+        datos.borrar(buscar);
         System.out.println("Catalogo eliminado con exito");
     }
 

@@ -6,21 +6,38 @@ import com.imprenta.excepciones.*;
 import java.io.*;
 import java.util.*;
 
+/*
+ * Te he cambiado un par de cosas en esta clase para evitar mucha duplicación de código:
+ *  - Primero, ya que esta clase tiene pinta de estar dedicada a Producto (que es lo que estás utilizando), he movido el nombre del fichero a una variable.
+ *    Está bien si quieres hacerlo más genérico, pero para eso te haría falta que List<Producto> sea genérico también, y eso es otra historia
+ *
+ *   - Si vas a hacer muchas veces la apertura de BufferedReader/PrintWriter, mejor sacar esa parte a un método
+ *     No hay que tener miedo al crear funciones
+ */
+
 public class AccesoDatosImp implements IAccesoDatos {
+    /**
+     * Nombre del fichero que utiliza esta clase
+     */
+    private final String nombreArchivo = "productos.txt";
 
     @Override
-    public boolean existe(String nombreArchivo) {
-        File archivo = new File(nombreArchivo);
+    public boolean existe() {
+        File archivo = new File(this.nombreArchivo);
         return archivo.exists();
     }
 
+    // [EDU] Los comentarios de métodos y clases, si los vas escribiendo en este formato (JavaDoc), mejor
+    /**
+     * TRADUCE DE TEXTO A OBJ
+     * 
+     * @return Lista de Elementos
+     */
     @Override
-    //TRADUCE DE TEXTO A OBJ
-    public List<Producto> listar(String nombreArchivo) throws LecturaDatosEx {
-        File archivo = new File(nombreArchivo);
+    public List<Producto> listar() throws LecturaDatosEx {
         List<Producto> listaProd = new ArrayList<Producto>();
         try {
-            BufferedReader entrada = new BufferedReader(new FileReader(archivo));
+            BufferedReader entrada = obtenerEntrada();
             var lectura = entrada.readLine();
 
             while (lectura != null) {
@@ -51,8 +68,7 @@ public class AccesoDatosImp implements IAccesoDatos {
     }
 
     @Override
-    public void escribir(Producto producto, String nombreArchivo, boolean anexar) throws EscrituraDatosEx {
-        File archivo = new File(nombreArchivo);
+    public void escribir(Producto producto, boolean anexar) throws EscrituraDatosEx {
         String escribir = producto.getId_trabajo()
                 + ";" + producto.getNombre_trabajo()
                 + ";" + producto.getMedida()
@@ -65,7 +81,7 @@ public class AccesoDatosImp implements IAccesoDatos {
                 + ";" + producto.getEncuadernado()
                 + ";" + producto.isIs_plegado();
         try {
-            PrintWriter salida = new PrintWriter(new FileWriter(archivo, true));
+            PrintWriter salida = obtenerSalida();
             salida.println(escribir);
             salida.close();
             System.out.println("Escrito el contenido con exito\n");
@@ -78,19 +94,18 @@ public class AccesoDatosImp implements IAccesoDatos {
     }
 
     @Override
-    public String buscar(String nombreArchivo, String buscar) {
-        File archivo = new File(nombreArchivo);
+    public String buscar(String buscar) {
         String mensaje = "";
         int linea = 0;
         try {
-            BufferedReader entrada = new BufferedReader(new FileReader(archivo));
+            BufferedReader entrada = obtenerEntrada();
             var lectura = entrada.readLine();
 
             while (lectura != null) {
                 String[] cadenaProducto = lectura.split(";");
                 linea = linea + 1;
                 if (cadenaProducto[1].equalsIgnoreCase(buscar)) {
-                    mensaje = "Nombre del archivo : " + nombreArchivo + "\n" + "Producto : " + lectura + "\n" + "Linea : " + linea;
+                    mensaje = "Nombre del archivo : " + this.nombreArchivo + "\n" + "Producto : " + lectura + "\n" + "Linea : " + linea;
                     break;
                 }
                 lectura = entrada.readLine();
@@ -113,23 +128,20 @@ public class AccesoDatosImp implements IAccesoDatos {
     }
 
     @Override
-    public void crear(String nombreArchivo) throws EscrituraDatosEx {
-        File archivo = new File(nombreArchivo);
-
+    public void crear() throws EscrituraDatosEx {
         try {
-            PrintWriter salida = new PrintWriter(archivo);
+            PrintWriter salida = obtenerSalida();
             salida.close();
             System.out.println("Se ha creado con exito el archivo");
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace(System.out);
             //throw new ExcepcionEscrituraDatosEx("No se ha podido crear el archivo");
         }
     }
 
     @Override
-    public void borrar(String nombreArchivo, String buscar) {
-        File archivo = new File(nombreArchivo);
-
+    public void borrar(String buscar) {
+        File archivo = new File(this.nombreArchivo);
         try {
             BufferedReader entrada = new BufferedReader(new FileReader(archivo));
             var lectura = entrada.readLine();
@@ -158,12 +170,14 @@ public class AccesoDatosImp implements IAccesoDatos {
             if (lectura == null) {
                 if (archivo.exists() == true) {
                     archivo.delete();
-                    System.out.println("El archivo a sido eliminado");
+                    System.out.println("El archivo ha sido eliminado");
                 } else {
                     System.out.println("El archivo que quieres eliminar no existe");
                 }
                 System.out.println("Se han eliminado las lineas");
             }
+
+            salida.close();
             entrada.close();
 
         } catch (FileNotFoundException e) {
@@ -175,4 +189,27 @@ public class AccesoDatosImp implements IAccesoDatos {
         }
     }
 
+    /**
+     * [EDU]
+     * Obtiene un PrintWriter para escribir en la consola
+     * 
+     * @return PrintWriter
+     */
+    private PrintWriter obtenerSalida() throws IOException {
+        File archivo = new File(this.nombreArchivo);
+
+        return new PrintWriter(new FileWriter(archivo, true));
+    }
+
+    /**
+     * [EDU]
+     * Obtiene un BufferedReader para leer de la consola
+     * 
+     * @return BufferedReader
+     */
+    private BufferedReader obtenerEntrada() throws FileNotFoundException {
+        File archivo = new File(this.nombreArchivo);
+
+        return new BufferedReader(new FileReader(archivo));
+    }
 }

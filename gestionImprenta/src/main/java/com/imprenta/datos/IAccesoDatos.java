@@ -1,20 +1,25 @@
 package com.imprenta.datos;
 
+// [EDU] Te recomiendo evitar los import así, se pierde visibilidad de las dependencias que tiene la clase
 import com.imprenta.excepciones.*;
 import com.imprenta.dominio.*;
+// [EDU] Sin embargo con esto sabes fácilmente que sólo dependes de List dentro de java.util
 import java.util.List;
 
+// [EDU] Si esta clase va a acabar siendo específica para Producto, vendría bien llamarla IAccesoDatosProducto, por ejemplo
+// (Y lo mismo con la implementación, igual que con la de catalogo)
 public interface IAccesoDatos {
 
-    boolean existe(String nombreArchivo) throws AccesoDatosEx;
+    boolean existe() throws AccesoDatosEx;
 
-    List<Producto> listar(String nombreArchivo) throws LecturaDatosEx;
+    List<Producto> listar() throws LecturaDatosEx;
 
-    void escribir(Producto producto, String nombreArchivo, boolean anexar) throws EscrituraDatosEx;
+    void escribir(Producto producto, boolean anexar) throws EscrituraDatosEx;
 
-    String buscar(String nombreArchivo, String buscar) throws LecturaDatosEx;
+    String buscar(String buscar) throws LecturaDatosEx;
 
-    void crear(String nombreArchivo) throws AccesoDatosEx;
+    void crear() throws AccesoDatosEx;
 
-    void borrar(String nombreArchivo, String buscar);
+    void borrar(String buscar);
+
 }

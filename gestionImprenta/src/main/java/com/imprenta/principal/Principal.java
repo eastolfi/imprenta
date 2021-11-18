@@ -37,7 +37,7 @@ public class Principal {
             switch (opcion) {
 
                 case 1:
-                    datosClientes.iniciarArchivo("clientes.txt");
+                    datosClientes.iniciarArchivo(/*"clientes.txt"*/);
                     System.out.println("\n¿Que más quieres hacer?");
                     break;
                 case 2:
@@ -45,15 +45,15 @@ public class Principal {
                     System.out.println("\n¿Que más quieres hacer?");
                     break;
                 case 3:
-                    datosClientes.listar("clientes.txt");
+                    datosClientes.listar(/*"clientes.txt"*/);
                     System.out.println("\n¿Que más quieres hacer?");
                     break;
                 case 4:
-                    datosClientes.buscar("clientes.txt", "Giga gaming 3060");
+                    datosClientes.buscar(/*"clientes.txt", */"Giga gaming 3060");
                     System.out.println("\n¿Que más quieres hacer?");
                     break;
                 case 7:
-                    datosClientes.borrar("clientes.txt", "Giga gaming 3060");
+                    datosClientes.borrar(/*"clientes.txt", */"Giga gaming 3060");
                     System.out.println("\n¿Que más quieres hacer?");
                     break;
                 case 0:
@@ -88,26 +88,26 @@ public class Principal {
             opcion = sn.nextInt();
             switch (opcion) {
                 case 1:
-                    datosProductos.iniciarArchivo("productos.txt");
+                    datosProductos.iniciarArchivo();
                     System.out.println("\n¿Que más quieres hacer?");
                     break;
                 case 2:
-                    datosProductos.agregar("productos.txt",  "triptico", TamanioPapel.A4, true, TipoPapel.MATE, 200, true, TipoPlastificado.NO, false, TipoEncuadernado.NO, true);
+                    datosProductos.agregar("triptico", TamanioPapel.A4, true, TipoPapel.MATE, 200, true, TipoPlastificado.NO, false, TipoEncuadernado.NO, true);
                     //datosProductos.agregar("productos.txt", 3, "carpeta", TamanioPapel.A3, false, TipoPapel.MATE, 300, true, TipoPlastificado.ANTIRAYAS, false, TipoEncuadernado.NO, true);
                     //datosProductos.agregarTeclado("productos.txt", p1);
                     //introducirProductoPorTeclado();
                     System.out.println("\n¿Que más quieres hacer?");
                     break;
                 case 3:
-                    datosProductos.listar("productos.txt");
+                    datosProductos.listar();
                     System.out.println("\n¿Que más quieres hacer?");
                     break;
                 case 4:
-                    datosProductos.buscar("productos.txt", "tarjetass");
+                    datosProductos.buscar("tarjetass");
                     System.out.println("\n¿Que más quieres hacer?");
                     break;
                 case 5:
-                    datosProductos.borrar("productos.txt", "carpeta");
+                    datosProductos.borrar("carpeta");
                     System.out.println("\n¿Que más quieres hacer?");
                     break;
                 case 6:
@@ -133,6 +133,8 @@ public class Principal {
         TipoPlastificado plastificado;
         TipoEncuadernado encuadernado;
         boolean caras, color, puntasRed, plegado;
+
+        // [EDU] Este tipo de clases (como el PrintWriter, Buffer, etc) habría que cerrarlas también 
         Scanner sn = new Scanner(System.in);
 
         System.out.println("Introduce los datos del producto :) ");
@@ -169,7 +171,7 @@ public class Principal {
         System.out.println("¿LLeva plegado? (true o false)");
         plegado = sn.nextBoolean();
 
-        datosProductos1.agregar("productos.txt",  nombreProd, tamanio, caras, papel, gramaje, color, plastificado, puntasRed, encuadernado, plegado);
+        datosProductos1.agregar(nombreProd, tamanio, caras, papel, gramaje, color, plastificado, puntasRed, encuadernado, plegado);
         //Producto p1 = new Producto(nombreProd, tamanio, caras, papel, gramaje, color, plastificado, puntasRed, encuadernado, plegado);
     }
 }
