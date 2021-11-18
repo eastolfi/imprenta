@@ -189,6 +189,41 @@ public class AccesoDatosImp implements IAccesoDatos {
         }
     }
 
+    @Override
+    public int buscarUltimoID() {
+        // Por defecto devolvemos -1
+        int ultimoID = -1;
+
+        try {
+            BufferedReader entrada = obtenerEntrada();
+            var lectura = entrada.readLine();
+
+            while (lectura != null) {
+                // Recuperamos la primera columna (ID)
+                int id = Integer.parseInt(lectura.split(";")[0]);
+
+                // Si el ID que hemos recuperado es superior al ultimo obtenido, lo guardamos
+                if (id > ultimoID) {
+                    ultimoID = id;
+                }
+
+                lectura = entrada.readLine();
+            }
+
+            entrada.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace(System.out);
+            System.out.println("Error al leerlo");
+        } catch (IOException e) {
+            e.printStackTrace(System.out);
+            System.out.println("No se ha encontrado el archivo");
+        }
+
+        // Devolvemos el ID mas alto encontrado
+        return ultimoID;
+    }
+
     /**
      * [EDU]
      * Obtiene un PrintWriter para escribir en la consola

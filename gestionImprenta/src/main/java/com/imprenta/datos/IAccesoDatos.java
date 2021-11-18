@@ -22,4 +22,12 @@ public interface IAccesoDatos {
 
     void borrar(String buscar);
 
+    /**
+     * [EDU]
+     * 
+     * Recupera el ultimo ID del fichero
+     * 
+     * @return El ultimo (mas alto) ID del fichero, o -1 si no hay ninguno
+     */
+    int buscarUltimoID();
 }

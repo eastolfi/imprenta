@@ -1,9 +1,10 @@
 package com.imprenta.dominio;
 
+import com.imprenta.utilidades.Generador;
+
 public class Producto {
 
     private final int id_producto;
-    private static int contador_producto;
     private String nombre_producto;
     protected TamanioPapel medida;
     private boolean is_2_caras;
@@ -16,12 +17,14 @@ public class Producto {
     private boolean is_plegado;
 
     public Producto() {
-        this.id_producto = ++contador_producto;
+        // [EDU] Te he movido la obtencion de un ID a una clase separada
+        this.id_producto = Generador.generarIdProducto();
     }
 
     //constructor con todoooo
     public Producto(int id_producto, String nombre_producto, TamanioPapel medida, boolean is_2_caras, TipoPapel papel, int gramaje, boolean is_Color, TipoPlastificado plastificado, boolean puntasRedondeaDas, TipoEncuadernado encuadernado, boolean is_plegado) {
-        this.id_producto = ++contador_producto;
+        this.id_producto = Generador.generarIdProducto();
+
         this.nombre_producto = nombre_producto;
         this.medida = medida;
         this.is_2_caras = is_2_caras;
