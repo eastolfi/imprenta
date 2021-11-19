@@ -13,7 +13,7 @@ public interface IAccesoDatos<T> {
 
     List<T> listar(String nombreArchivo) throws LecturaDatosEx;
 
-    void escribir(T producto, String nombreArchivo, boolean anexar) throws EscrituraDatosEx;
+    void escribir(T elemento, String nombreArchivo, boolean anexar) throws EscrituraDatosEx;
 
     String buscar(String nombreArchivo, String buscar) throws LecturaDatosEx;
 
