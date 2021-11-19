@@ -6,7 +6,7 @@ import com.imprenta.excepciones.*;
 import java.io.*;
 import java.util.*;
 
-public class AccesoDatosImp implements IAccesoDatos {
+public class AccesoDatosClienteImp implements IAccesoDatos<Cliente> {
 
     @Override
     public boolean existe(String nombreArchivo) {
@@ -16,27 +16,16 @@ public class AccesoDatosImp implements IAccesoDatos {
 
     @Override
     //TRADUCE DE TEXTO A OBJ
-    public List<Producto> listar(String nombreArchivo) throws LecturaDatosEx {
+    public List<Cliente> listar(String nombreArchivo) throws LecturaDatosEx {
         File archivo = new File(nombreArchivo);
-        List<Producto> listaProd = new ArrayList<Producto>();
+        List<Cliente> listaProd = new ArrayList<Cliente>();
         try {
             BufferedReader entrada = new BufferedReader(new FileReader(archivo));
             var lectura = entrada.readLine();
 
             while (lectura != null) {
-                String[] arrProducto = lectura.split(";");
-                Producto producto = new Producto(
-                        Integer.parseInt(arrProducto[0]),
-                        arrProducto[1],
-                        TamanioPapel.valueOf(arrProducto[2]),
-                        Boolean.parseBoolean(arrProducto[3]),
-                        TipoPapel.valueOf(arrProducto[4]),
-                        Integer.parseInt(arrProducto[5]),
-                        Boolean.parseBoolean(arrProducto[6]),
-                        TipoPlastificado.valueOf(arrProducto[7]),
-                        Boolean.parseBoolean(arrProducto[8]),
-                        TipoEncuadernado.valueOf(arrProducto[9]),
-                        Boolean.parseBoolean(arrProducto[10]));
+                // String[] arrProducto = lectura.split(";");
+                Cliente producto = new Cliente();
                 listaProd.add(producto);
                 lectura = entrada.readLine();
             }
@@ -51,19 +40,9 @@ public class AccesoDatosImp implements IAccesoDatos {
     }
 
     @Override
-    public void escribir(Producto producto, String nombreArchivo, boolean anexar) throws EscrituraDatosEx {
+    public void escribir(Cliente producto, String nombreArchivo, boolean anexar) throws EscrituraDatosEx {
         File archivo = new File(nombreArchivo);
-        String escribir = producto.getId_trabajo()
-                + ";" + producto.getNombre_trabajo()
-                + ";" + producto.getMedida()
-                + ";" + producto.isIs_2_caras()
-                + ";" + producto.getPapel()
-                + ";" + producto.getGramaje()
-                + ";" + producto.isIs_Color()
-                + ";" + producto.getPapel()
-                + ";" + producto.isPuntasRedondeaDas()
-                + ";" + producto.getEncuadernado()
-                + ";" + producto.isIs_plegado();
+        String escribir = "";
         try {
             PrintWriter salida = new PrintWriter(new FileWriter(archivo, true));
             salida.println(escribir);

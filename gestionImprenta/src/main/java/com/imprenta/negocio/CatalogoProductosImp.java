@@ -10,7 +10,7 @@ public class CatalogoProductosImp implements ICatalogoProductos {
     private final IAccesoDatos datos;//Puente de comunicacion
 
     public CatalogoProductosImp() {
-        this.datos = new AccesoDatosImp();
+        this.datos = new AccesoDatosProductoImp();
     }
 
     @Override
